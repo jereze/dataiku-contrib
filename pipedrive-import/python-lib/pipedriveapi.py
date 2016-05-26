@@ -32,9 +32,9 @@ def make_api_call(conf, action, params = {}, method = 'get', data = {}):
         'Content-type': 'application/json'
     }
     if method == 'get':
-        r = requests.request(method, conf['API_BASE_URL']+action, params=parameters)
+        r = requests.request(method, conf['API_BASE_URL']+action, params=parameters, timeout=5)
     elif method == 'post':
-        r = requests.request(method, conf['API_BASE_URL']+action, data=data, params=parameters)
+        r = requests.request(method, conf['API_BASE_URL']+action, data=data, params=parameters, timeout=5)
     else:
         raise ValueError('Method should be get or post.')
     print 'API call: ' + r.url
